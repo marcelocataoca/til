@@ -23,7 +23,7 @@ app.post('/products', (req, res, next) => {
     res.send(product)
 })
 
-app.put('/products:id', (req, res, next) => {
+app.put('/products/:id', (req, res, next) => {
     const product = database.saveProduct({
         id: req.params.id,
         name: req.body.name,
@@ -32,9 +32,9 @@ app.put('/products:id', (req, res, next) => {
     res.send(product)
 })
 
-app.delete('/products:id', (req, res, next) => {
+app.delete('/products/:id', (req, res, next) => {
     const product = database.deleteProduct(req.params.id)
-    return product
+    res.send(product)
 })
 
 app.listen(port, () => {
